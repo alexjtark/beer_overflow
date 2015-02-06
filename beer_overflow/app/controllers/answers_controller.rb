@@ -18,9 +18,17 @@ def show
 end
 
 def edit
+  @answer = Answer.find(params[:id])
 end
 
 def update
+
+end
+
+private
+
+def answer_params
+  params.require(:answer).permit(:responder_id, :content, :question_id)
 end
 
 end
