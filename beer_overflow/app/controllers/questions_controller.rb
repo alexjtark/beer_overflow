@@ -22,6 +22,10 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   def edit
   end
 
+  def index
+    @questions = Question.all
+  end
+
   def update
     @question.update(question_params)
     redirect_to @question
