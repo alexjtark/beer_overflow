@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy]
 
+  def index
+    @question = Question.find(params[:question_id])
+    @comments = @question.comments
+  end
+
   def new
     @comment = Comment.new
     @question = Question.find(params[:question_id])
@@ -10,7 +15,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new comment_params
     if @comment.save
-      redirect_to '/'
+      redirect_to comment_path(@comment) # this isn't working
     else
       render :new
     end
