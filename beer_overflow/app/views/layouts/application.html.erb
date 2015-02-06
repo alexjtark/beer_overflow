@@ -8,6 +8,7 @@
 </head>
 <body>
   <header>
+    <div id='logo'>Beer Overflow</div>
   <% if current_user %>
     <%= link_to "Logout", signout_path  %>
   <% else %>
@@ -15,8 +16,8 @@
     <%= link_to "Login", login_path %>
   <% end %>
   </header>
-
+  <div class='column'>
 <%= yield %>
-
+  </div>
 </body>
 </html>
