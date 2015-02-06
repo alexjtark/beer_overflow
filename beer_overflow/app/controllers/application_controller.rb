@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
+  def save_login_state
+    if session[:user_id]
+      redirect_to(:controller => 'questions', :action => 'index')
+      return false
+    else
+      return true
+    end
+  end
 end
