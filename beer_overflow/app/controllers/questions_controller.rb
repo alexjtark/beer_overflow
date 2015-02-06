@@ -24,7 +24,7 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.all_by_date
   end
 
   def update
