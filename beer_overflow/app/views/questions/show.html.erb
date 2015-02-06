@@ -6,3 +6,4 @@
 <%= @question.created_at %>
 </div>
 <%= link_to 'Edit', edit_question_path(@question)  %>
+<%= link_to 'Delete', @qustion, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>

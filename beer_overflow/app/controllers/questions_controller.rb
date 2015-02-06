@@ -13,6 +13,11 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
     redirect_to @question
   end
 
+  def destroy
+    @question.destroy
+    redirect_to '/'
+  end
+
   private
 
   def set_question
