@@ -1,6 +1,6 @@
 <div id="login_form">
 
-  <%=form_for(:session, url: sessions_create_path) do |f| %>
+  <%=form_for(:session, url: login_path) do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email%>
     <%= f.label :password%>
@@ -8,4 +8,6 @@
 
     <%= f.submit "Login"%>
   <%end%>
+
+  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 </div>
