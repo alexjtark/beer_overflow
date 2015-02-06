@@ -3,5 +3,6 @@
   <%= f.label :content %>:
   <%= f.text_field :content %><br>
 
+  <%= f.hidden_field :question_id, value: params[:id] %>
   <%= f.submit %>
 <% end %>
