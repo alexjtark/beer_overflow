@@ -7,11 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%if current_user%>
+  <header>
+    <div id='logo'><%= link_to "Beer Overflow", root_path %></div>
+  <% if current_user %>
     <%= link_to "Logout", signout_path  %>
-  <%end%>
-
+  <% else %>
+    <%= link_to "Sign Up", signup_path %>
+    <%= link_to "Login", login_path %>
+  <% end %>
+  </header>
+  <div class='column'>
 <%= yield %>
-
+  </div>
 </body>
 </html>
