@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_filter :save_login_state, :only => [:new, :create]
+
 
   def new
     @user = User.new
