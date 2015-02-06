@@ -1,20 +1,27 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy]
 
-  def create
-
-  end
-
   def new
     @comment = Comment.new
+    @question = Question.find(params[:question_id])
+    # refactor the above to take the parent id or type
+  end
+
+  def create
+    @comment = Comment.new comment_params
+    if @comment.save
+      redirect_to '/'
+    else
+      render :new
+    end
   end
 
   def show
-
   end
 
   def destroy
-
+    @comment.destroy
+    #redirect to current question
   end
 
   private
