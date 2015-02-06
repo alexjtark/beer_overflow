@@ -1,0 +1,14 @@
+.column h1 {
+  color: white;
+}
+
+.column {
+  margin: 0 auto;
+  width: 70%;
+  border: 1px solid #ADD8E6;
+}
+
+#logo {
+  color: yellow;
+  font-size: 2em;
+}
