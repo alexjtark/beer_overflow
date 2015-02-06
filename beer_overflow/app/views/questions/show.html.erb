@@ -10,21 +10,21 @@
 
 <div class="question-answers">
 
-<% @question.answers.each do |q| %>
+<% @question.answers.each do |answer| %>
 
-<%= q.content %>
+<%= answer.content %>
 
-<%= q.responder.username %>
+<%= answer.responder.username %>
 <p>add a comment</p>
   <%= link_to 'comment', new_question_comment_path(@question) %>
   <% end %>
 </div>
 
-<div class="">
-  <p>answer this question:</p>
+<div class="answer-question">
+  <p>Answer This Question:</p>
 <%= render partial: '/answers/new', controller: 'answers', action: 'new', locals: {:question_id => @question.id} %>
-
 </div>
+
 
 <div class="back">
 <p><%=link_to 'Back to Index', index_path  %></p>
