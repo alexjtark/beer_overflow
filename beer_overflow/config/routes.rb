@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :questions, :answers, :comments
+  resources :questions, :answers
+
+  resources :questions do
+    resources :comments
+  end
+
+  resources :answers do
+    resources :comments
+  end
 
 
   get 'login' => 'sessions#new'
@@ -7,6 +15,7 @@ Rails.application.routes.draw do
   get 'signout' => 'sessions#destroy'
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
