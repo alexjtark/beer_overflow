@@ -13,9 +13,11 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @question = Question.find(params[:question_id])
     @comment = Comment.new comment_params
     if @comment.save
-      redirect_to comment_path(@comment) # this isn't working
+      @question.comments << @comment
+      redirect_to '/' # this isn't working
     else
       render :new
     end
