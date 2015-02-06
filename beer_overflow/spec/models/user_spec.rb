@@ -11,37 +11,27 @@ describe User do
 
   it "is invalid without a username" do
     user = User.new(username: nil, email: Faker::Internet.email)
+    user.valid?
     expect(user.errors[:username]).to include("can't be blank")
   end
 
   it "is invalid without an email" do
     user = User.new(username: Faker::Internet.user_name, email: nil)
+    user.valid?
     expect(user.errors[:email]).to include("can't be blank")
   end
 
   it "is invalid without a unique username" do
-
+    User.create(username: 'bunday', email: 'iluvu@peace.com')
+    user = User.new(username: 'bunday', email: 'test@test.com')
+    user.valid?
+    expect(user.errors[:username]).to include("has already been taken")
   end
 
   it "is invalid without a unique email" do
-
+    User.create(username: 'bunday', email: 'iluvu@peace.com')
+    user = User.new(username: 'harry', email: 'iluvu@peace.com')
+    user.valid?
+    expect(user.errors[:email]).to include("has already been taken")
   end
-
 end
-
-
- it "is invalid without a firstname" do
-contact = Contact.new(firstname: nil)
-contact.valid?
-expect(contact.errors[:firstname]).to include("can't be blank")
-end
-
-
-describe Contact do
-4 it "is valid with a firstname, lastname and email"
-5 it "is invalid without a firstname"
-6 it "is invalid without a lastname"
-7 it "is invalid without an email address"
-8 it "is invalid with a duplicate email address"
-9 it "returns a contact's full name as a string"
-10 end
