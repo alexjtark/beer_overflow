@@ -12,6 +12,7 @@
 <% @question.answers.each do |q| %>
 
 <%= q.content %>
+
 <%= q.responder.username %>
 <p>add a comment</p>
 <%= link_to 'comment', new_question_comment_path(@question) %>
@@ -20,7 +21,7 @@
 
 <div class="">
   <p>answer this question:</p>
-<%= render partial: '/answers/new', controller: 'answers', action: 'new' %>
+<%= render partial: '/answers/new', controller: 'answers', action: 'new', locals: {:question_id => @question.id} %>
 
 </div>
 

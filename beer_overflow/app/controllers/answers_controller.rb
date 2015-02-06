@@ -1,9 +1,12 @@
 class AnswersController < ApplicationController
 
 def create
-  answer = Answer.create(content: params[:answer][:content], responder_id: sessions[:id], question_id: params[:id])
 
-  redirect_to :controller => 'question', :action => 'show', :id => params[:id]
+  answer = Answer.create(content: params[:answer][:content], responder_id: current_user.id, question_id: params[:answer][:question_id])
+
+
+  redirect_to :controller => 'questions', :action => 'show', :id => params[:answer][:question_id]
+
 
 end
 
