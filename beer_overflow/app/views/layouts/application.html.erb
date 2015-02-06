@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <div id='logo'>Beer Overflow</div>
+    <div id='logo'><%= link_to "Beer Overflow", root_path %></div>
   <% if current_user %>
     <%= link_to "Logout", signout_path  %>
   <% else %>

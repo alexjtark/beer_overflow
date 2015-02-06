@@ -8,7 +8,11 @@
   border: 1px solid #ADD8E6;
 }
 
-#logo {
+#logo a {
   color: yellow;
   font-size: 2em;
+}
+
+form input {
+  color: black;
 }
