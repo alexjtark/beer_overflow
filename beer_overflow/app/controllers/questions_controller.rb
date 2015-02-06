@@ -5,6 +5,10 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   def show
   end
 
+  def new
+    @question = Question.new
+  end
+
   def edit
   end
 
