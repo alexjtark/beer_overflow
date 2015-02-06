@@ -1,0 +1,9 @@
+<h1><%= @question.title %></h1>
+
+<%= @question.content %>
+<div class='question-asker'>
+<%= @question.asker.username %>
+<%= @question.created_at %>
+</div>
+<%= link_to 'Edit', edit_question_path(@question)  %>
+<%= link_to 'Delete', @qustion, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>
