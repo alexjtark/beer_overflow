@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
+
     @comment = Comment.new comment_params
     if @comment.save
       redirect_to '/' # this isn't working
