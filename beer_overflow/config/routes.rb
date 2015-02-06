@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, :questions, :answers, :comments
+  resources :questions, :answers, :comments
+
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
