@@ -1,11 +1,9 @@
 class AnswersController < ApplicationController
 
 def create
-
   answer = Answer.create(content: params[:answer][:content], responder_id: current_user.id, question_id: params[:answer][:question_id])
 
   redirect_to :controller => 'questions', :action => 'show', :id => params[:answer][:question_id]
-
 
 end
 
@@ -15,15 +13,6 @@ end
 
 def show
   @answer = Answer.find(params[:id])
-  @question = Question.find(@answer.question_id)
-  @responder = User.find(@answer.responder_id)
-end
-
-def edit
-  @answer = Answer.find(params[:id])
-end
-
-def update
 
 end
 
