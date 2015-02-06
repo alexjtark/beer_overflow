@@ -1,12 +1,12 @@
 <h1><%= @question.title %></h1>
 
-<%= @question.content %>
+  <%= @question.content %>
 <div class='question-asker'>
-<%= @question.asker.username %>
-<%= @question.created_at %>
+  <%= @question.asker.username %>
+  <%= @question.created_at %>
 </div>
-<%= link_to 'Edit', edit_question_path(@question)  %>
-<%= link_to 'Delete', @qustion, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>
+  <%= link_to 'Edit', edit_question_path(@question)  %>
+  <%= link_to 'Delete', @qustion, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>
 
 <div class="question-answers">
 <% @question.answers.each do |q| %>
@@ -14,9 +14,10 @@
 <%= q.content %>
 
 <%= q.responder.username %>
+
 <p>add a comment</p>
-<%= link_to 'comment', new_question_comment_path(@question) %>
-<% end %>
+  <%= link_to 'comment', new_question_comment_path(@question) %>
+  <% end %>
 </div>
 
 <div class="">
