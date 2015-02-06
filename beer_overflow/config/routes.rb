@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
 
+  get 'index' => 'questions#index'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
