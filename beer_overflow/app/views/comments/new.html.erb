@@ -1,0 +1,12 @@
+<h1>Comment</h1>
+<ul>
+<%= form_for([@question, @comment]) do |f| %>
+    <li>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+    </li>
+    <li>
+      <%= f.submit %>
+    </li>
+  <% end %>
+</ul>
