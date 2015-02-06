@@ -56,10 +56,11 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: white;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  background-image: url("http://farm5.static.flickr.com/4111/5000335370_7ac2a9be73_b.jpg");
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
