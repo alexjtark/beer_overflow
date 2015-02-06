@@ -4,6 +4,8 @@
 </div>
 
 <div>
-  <%= @answer.content %>
-  <%= @responder.username %>
+  <%= answer.content %>
+  <%= answer.responder.username %>
 </div>
+
+<p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
