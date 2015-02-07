@@ -1,14 +1,9 @@
 <h1>Comment</h1>
-<ul>
-<%= form_for([@question, @question_comment]) do |f| %>
-    <li>
-      <%= f.label :content %>
-      <%= f.text_field :content %>
-    </li>
+<div>
+  <%= form_for([@question, @question_comment]) do |f| %>
+      <%= f.text_area :content, cols: 70, rows: 8 %>
       <%= f.hidden_field :parent_id, :value => @question.id %>
       <%= f.hidden_field :parent_type, :value => @question.class  %>
-    <li>
       <%= f.submit %>
-    </li>
   <% end %>
-</ul>
+</div>
