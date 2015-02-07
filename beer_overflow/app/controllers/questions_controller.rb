@@ -16,7 +16,8 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
     if @question.save
       redirect_to @question
     else
-      redirect_to :back
+
+      redirect_to signup_path
     end
   end
 
