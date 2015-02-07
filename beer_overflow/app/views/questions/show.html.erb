@@ -33,7 +33,6 @@
       </p>
         <%= render partial: '/answers/new', controller: 'answers', action: 'new', locals: {:question_id => @question.id} %>
     </div>
-
     <p>
      <%= link_to 'Comment on Question', {:controller => "question_comments", :action => "new", :question_id => @question.id}%></p>
 
