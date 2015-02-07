@@ -28,7 +28,7 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   end
 
   def update
-    @question.update(question_params)
+    @question.update_attributes(question_params)
     redirect_to @question
   end
 
@@ -48,6 +48,6 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   # end
 
   def question_params
-    params.require(:question).permit(:title, :content)
+    params.require(:question).permit(:title, :content, :best_answer_id)
   end
 end

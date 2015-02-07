@@ -7,6 +7,12 @@
 <div>
   <%= answer.content %>
 </div>
-  <p>
-    <%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%>
-  </p>
+
+<%= form_for(@question) do |f| %>
+  <%= f.hidden_field :best_answer_id, :value => answer.id %>
+  <%= f.submit "Best Answer" %>
+<% end %>
+
+
+<p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
+
