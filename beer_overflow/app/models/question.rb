@@ -32,4 +32,8 @@ class Question < ActiveRecord::Base
     self.created_at.strftime("%D %R %Z")
   end
 
+  def vote_count
+    votes.where(liked: true).count - votes.where(liked: false).count
+  end
+
 end
