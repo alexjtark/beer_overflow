@@ -6,6 +6,22 @@ class Question < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
+  def order_answers
+    ordered_answers = []
+    answers = self.answers
+
+    if self.best_answer
+      ordered_answers << self.best_answer
+      answers.delete(self.best_answer)
+
+      answers.each do |answer|
+        ordered_answers << answer
+      end
+    end
+    ordered_answers
+
+  end
+
   def self.all_by_date
     Question.all.order(created_at: :desc)
   end
