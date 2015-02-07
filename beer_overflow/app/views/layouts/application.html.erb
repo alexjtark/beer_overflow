@@ -7,17 +7,70 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <div id='logo'><%= link_to "Beer Overflow", root_path %></div>
-  <% if current_user %>
-    <%= link_to "Logout", signout_path  %>
-  <% else %>
-    <%= link_to "Sign Up", signup_path %>
-    <%= link_to "Login", login_path %>
-  <% end %>
-  </header>
-  <div class='column'>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">BEER OVERFLOW</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <% if current_user %>
+                   <li>
+                    <%= link_to "Logout", signout_path  %>
+                  </li>
+
+                <% else %>
+                  <li>
+                  <%= link_to "Sign Up", signup_path %>
+                  </li>
+
+                  <li>
+                  <%= link_to "Login", login_path %>
+                  </li>
+                <% end %>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('http://farm5.static.flickr.com/4111/5000335370_7ac2a9be73_b.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>BEER OVERFLOW</h1>
+                        <hr class="small">
+                        <span class="subheading">Check out the overflow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <hr>
 <%= yield %>
-  </div>
 </body>
 </html>
+

@@ -54,7 +54,7 @@ html,
 body {
   font-size: 100%; }
 
-body {
+/*body {
   background: #fff;
   color: white;
   padding: 0;
@@ -65,7 +65,7 @@ body {
   font-style: normal;
   line-height: 1.5;
   position: relative;
-  cursor: auto; }
+  cursor: auto; }*/
 
 a:hover {
   cursor: pointer; }
