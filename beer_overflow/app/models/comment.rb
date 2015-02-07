@@ -5,8 +5,6 @@ class Comment < ActiveRecord::Base
   has_many :votes, as: :votable
 
   def vote_count
-    up = votes.where(liked: true).count
-    down = (-1) * votes.where(liked: false).count
-    return (up + down)
+    votes.where(liked: true).count - votes.where(liked: false).count
   end
 end
