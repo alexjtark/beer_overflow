@@ -8,9 +8,10 @@ class AnswerCommentsController < ApplicationController
 
   def create
     @answer_comment = Comment.new answer_comment_params
+    question = @answer_comment.parent.question
     @answer_comment.author = current_user
     if @answer_comment.save
-      redirect_to '/' # this isn't working
+      redirect_to question
     else
       render :new
     end
