@@ -1,11 +1,12 @@
-<div>
-  <%= @question.title %>
-  <%= @question.content %>
+<div id="answer-username">
+  <p>
+    <%= answer.responder.username %> answered:
+  </p>
 </div>
 
 <div>
   <%= answer.content %>
-  <%= answer.responder.username %>
 </div>
-
-<p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
+  <p>
+    <%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%>
+  </p>
