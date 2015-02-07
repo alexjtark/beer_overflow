@@ -23,7 +23,7 @@
      <%= link_to 'Comment on Question', {:controller => "question_comments", :action => "new", :question_id => @question.id}%></p>
 
     <div class="question-answers">
-      <% @question.answers.each do |answer| %>
+      <% @question.order_answers.each do |answer| %>
       <%=render :template => 'answers/show', locals: {answer: answer} %>
         <% answer.comments.each do |com| %>
         <div class="answer-comments">
