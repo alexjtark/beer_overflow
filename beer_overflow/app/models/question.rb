@@ -7,6 +7,8 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
   validates :content, presence: true
+  validates :asker_id, presence: true
+
 
   def order_answers
     ordered_answers = []
