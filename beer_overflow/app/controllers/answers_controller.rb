@@ -4,7 +4,6 @@ def create
   answer = Answer.create(content: params[:answer][:content], responder_id: current_user.id, question_id: params[:answer][:question_id])
 
   redirect_to :controller => 'questions', :action => 'show', :id => params[:answer][:question_id]
-
 end
 
 def new
@@ -13,7 +12,6 @@ end
 
 def show
   @answer = Answer.find(params[:id])
-
 end
 
 private

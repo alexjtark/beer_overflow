@@ -1,31 +1,43 @@
-<h1><%= @question.title %></h1>
+<h1>
+  <%= @question.title %>
+</h1>
+  <p>
+    <%= @question.asker.username %> asked,
+  </p>
+    <div class="question">
+      <%= @question.content %>
+    </div>
 
-  <%= @question.content %>
-<div class='question-asker'>
-  <%= @question.asker.username %>
-  <%= @question.created_at %>
-</div>
-  <%= link_to 'Edit', edit_question_path(@question)  %>
-  <%= link_to 'Delete', @qustion, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>
+    <div class='question-asker'>
+      <%= @question.created_at %>
+    </div>
 
-<div class="question-answers">
+      <%= link_to 'Edit', edit_question_path(@question)  %>
+      <%= link_to 'Delete', @question, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>
 
-<% @question.answers.each do |answer| %>
+    <div class="question-answers">
+      <% @question.answers.each do |answer| %>
+      <%=render :template => 'answers/show', locals: {answer: answer} %>
+        <% answer.comments.each do |com| %>
+        <div class="answer-comments">
+          <p><%= com.author.username %> commented,</p>
+          <p><%= com.content %></p>
+        </div>
+          <% end %>
+      <%end%>
+    </div>
 
-<%= answer.content %>
+    <div class="answer-question">
+      <p>
+        Answer This Question:
+      </p>
+        <%= render partial: '/answers/new', controller: 'answers', action: 'new', locals: {:question_id => @question.id} %>
+    </div>
+    <p>
+     <%= link_to 'Comment on Question', {:controller => "question_comments", :action => "new", :question_id => @question.id}%></p>
 
-<%= answer.responder.username %>
-<p>add a comment</p>
-  <%= link_to 'comment', new_question_comment_path(@question) %>
-  <% end %>
-</div>
-
-<div class="answer-question">
-  <p>Answer This Question:</p>
-<%= render partial: '/answers/new', controller: 'answers', action: 'new', locals: {:question_id => @question.id} %>
-</div>
-
-
-<div class="back">
-<p><%=link_to 'Back to Index', index_path  %></p>
-</div>
+  <div class="back">
+    <p>
+      <%=link_to 'Back to Index', index_path  %>
+    </p>
+  </div>

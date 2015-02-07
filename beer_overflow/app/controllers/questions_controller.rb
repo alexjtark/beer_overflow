@@ -16,7 +16,8 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
     if @question.save
       redirect_to @question
     else
-      redirect_to :back
+
+      redirect_to signup_path
     end
   end
 
@@ -24,11 +25,11 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.all_by_date
   end
 
   def update
-    @question.update(question_params)
+    @question.update_attributes(question_params)
     redirect_to @question
   end
 
@@ -48,6 +49,6 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   # end
 
   def question_params
-    params.require(:question).permit(:title, :content)
+    params.require(:question).permit(:title, :content, :best_answer_id)
   end
 end

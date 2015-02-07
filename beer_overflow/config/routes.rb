@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
-  # resources :questions, :answers
+
   root 'questions#index'
 
-  resources :questions do
-    resources :comments
-  end
-
-  resources :answers do
-    resources :comments
-  end
-
+  resources :questions, :answers, :answer_comments, :question_comments, :answer_votes, :question_votes, :comment_votes
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

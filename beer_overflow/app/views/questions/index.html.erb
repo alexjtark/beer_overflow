@@ -7,6 +7,7 @@
     <h4>
       <%= link_to "#{q.title}", question_path(q.id) %></h4><br>
       <%= q.content %><br>
-      <%= q.asker.username %>
+      <%= q.asker.username %><br>
+      <%= q.date_posted %>
   </div>
 <% end %>

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :questions, foreign_key: :asker_id
   has_many :answers, foreign_key: :responder_id
   has_many :comments, foreign_key: :author_id
+  has_many :votes
 
   def self.authenticate(username_or_email="", login_password="")
     if  EMAIL_REGEX.match(username_or_email)

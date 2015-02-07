@@ -1,9 +1,18 @@
-<div>
-  <%= @question.title %>
-  <%= @question.content %>
+<div id="answer-username">
+  <p>
+    <%= answer.responder.username %> answered:
+  </p>
 </div>
 
 <div>
-  <%= @answer.content %>
-  <%= @responder.username %>
+  <%= answer.content %>
 </div>
+
+<%= form_for(@question) do |f| %>
+  <%= f.hidden_field :best_answer_id, :value => answer.id %>
+  <%= f.submit "Best Answer" %>
+<% end %>
+
+
+<p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
+
