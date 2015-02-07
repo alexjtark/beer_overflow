@@ -8,8 +8,9 @@
   <%= answer.responder.username %>
 </div>
 
-<form action="">
-  Best Answer?<input type="submit" value="yes">
-</form>
+<%= form_for(@question) do |f| %>
+  <%= f.submit "Best Answer" %>
+<%end%>
+
 
 <p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
