@@ -8,4 +8,8 @@
   <%= answer.responder.username %>
 </div>
 
+<form action="">
+  Best Answer?<input type="submit" value="yes">
+</form>
+
 <p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
