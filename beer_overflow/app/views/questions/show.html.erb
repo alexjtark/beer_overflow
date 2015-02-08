@@ -17,8 +17,10 @@
       <%= @question.created_at %>
     </div>
 
-      <%= link_to 'Edit', edit_question_path(@question)  %>
-      <%= link_to 'Delete', @question, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>
+      <% if current_user.id == @question.asker.id %>
+        <%= link_to 'Edit', edit_question_path(@question)  %>
+        <%= link_to 'Delete', @question, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %>
+      <% end %>
 
       <% @question.comments.each do |com| %>
       <p><%= com.author.username %> commented,</p>
