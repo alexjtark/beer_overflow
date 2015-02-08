@@ -12,16 +12,14 @@ answers = ["Simply put, top fermenting yeast float to the top and bottom ferment
 
 contents = ["yes, absolutely", "no way, you shouldn't even be drinking beer", "maybe, check out this question for better result"]
 
-5.times do
-  user = User.new(username: Faker::Internet.user_name, password: '123', email: Faker::Internet.email)
-  2.times do
-    user.questions << Question.create(title: titles.sample, content: contents.sample, asker_id: rand(6))
-    user.questions.each do |question|
-      question.answers << Answer.create(content: answers.sample, responder_id: rand(6), question_id: question.id)
-    end
-  end
- user.save
+10.times do
+  user = User.create(username: Faker::Internet.user_name, password: '123', email: Faker::Internet.email)
 end
+
+5.times do
+  Question.create(title: titles.sample, content: contents.sample, asker_id: (rand(5) + 1))
+end
+
 
 
 # alias beer="rake db:drop && rake db:create && rake db:migrate"
