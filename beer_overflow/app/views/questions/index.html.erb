@@ -12,6 +12,8 @@
                  <p class="post-meta">
                   <%= q.asker.username %>
                   <%= q.date_posted  %>
+                  <strong>Votes</strong> <%= q.vote_count%> |
+      <%=link_to 'Up', question_up_path(q.id)%>|<%= link_to 'Down', question_down_path(q.id)%>
               </div>
             <hr>
           </div>
