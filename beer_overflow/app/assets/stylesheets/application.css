@@ -44,9 +44,32 @@
 }
 
 .answer {
-  width: 60%;
+  width: 80%;
 }
 
-.vote_count {
-  font-style: bold;
+.question_nav_bar {
+  display: inline-block;
+  font-style: italic;
+  padding-left: 10px;
+  height: 30px;
+}
+
+.answer_question {
+  position: relative;
+  width: 50%;
+  height: 20%;
+}
+
+#question {
+  margin-left: 30px;
+  width: 80%;
+}
+
+.q_nav_bar {
+  background-color: #99FF99;
+}
+
+.question_content {
+  background: #5CADFF;
+  padding: 10px;
 }
