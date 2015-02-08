@@ -11,22 +11,16 @@ class Question < ActiveRecord::Base
 
 
   def order_answers
-    ordered_answers = []
     answers = self.answers
+    ordered_answers = answers.sort_by { |a| a.vote_count }.reverse
 
     if self.best_answer
-      best = self.best_answer
-      ordered_answers << best
-
-      self.answers.each do |answer|
-        unless answer == self.best_answer
-          ordered_answers << answer
-        end
-      end
-      return ordered_answers
-    else
-      answers
+      best = ordered_answers.delete(best_answer)
+      ordered_answers.unshift(best)
     end
+
+    return ordered_answers
+
   end
 
   def self.all_by_date
