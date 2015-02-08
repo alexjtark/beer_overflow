@@ -8,16 +8,20 @@
 
 titles = ["is bud light with lime beer?", "Canadian beer vs American beer", "When does beer become malt liquor?", "What is the difference between ales and lagers?", "How did Indian Pale Ales get their name?" ]
 
-contents = ["Simply put, top fermenting yeast float to the top and bottom fermenting yeast sink towards the bottom. Top fermenting yeast like it much warmer. Around room temperature. This works the best for brewing if you are a home brewer. This produces ale style beers. Bottom fermenting yeasts are used to produce lager style brews.This type of yeast likes cooler temperatures. This yeast is used to brew styles such as Pilsners and Bocks.", "Ice beer involves lowering the temperature until ice starts to form then filtering it to get rid of the ice. With the reduction of water this makes ice beer more potent.", "You can indeed drink old beer but only depending on the beer's alcohol content. Otherwise, you run the risk of making yourself ill"]
+answers = ["Simply put, top fermenting yeast float to the top and bottom fermenting yeast sink towards the bottom. Top fermenting yeast like it much warmer. Around room temperature. This works the best for brewing if you are a home brewer. This produces ale style beers. Bottom fermenting yeasts are used to produce lager style brews.This type of yeast likes cooler temperatures. This yeast is used to brew styles such as Pilsners and Bocks.", "Ice beer involves lowering the temperature until ice starts to form then filtering it to get rid of the ice. With the reduction of water this makes ice beer more potent.", "You can indeed drink old beer but only depending on the beer's alcohol content. Otherwise, you run the risk of making yourself ill"]
 
-answers = ["yes, absolutely", "no way, you shouldn't even be drinking beer", "maybe, check out this question for better result"]
+contents = ["yes, absolutely", "no way, you shouldn't even be drinking beer", "maybe, check out this question for better result"]
 
 5.times do
   user = User.new(username: Faker::Internet.user_name, password: '123', email: Faker::Internet.email)
   2.times do
     user.questions << Question.create(title: titles.sample, content: contents.sample, asker_id: rand(6))
+    user.questions.each do |question|
+      question.answers << Answer.create(content: answers.sample, responder_id: rand(6), question_id: question.id)
+    end
   end
  user.save
 end
 
 
+# alias beer="rake db:drop && rake db:create && rake db:migrate"
