@@ -1,9 +1,0 @@
-<div class="form_down_vote">
-  <%= form_for([context, @vote], url: {:controller => "votes", :action => "create"}) do |f| %>
-    <%= f.hidden_field :votable_id, :value => context.id %>
-    <%= f.hidden_field :votable_type, :value => context.class %>
-    <%= f.hidden_field :liked, :value => false %>
-    <%= f.submit 'down' %>
-  <%end%>
-</div>
-
