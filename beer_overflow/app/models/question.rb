@@ -9,7 +9,6 @@ class Question < ActiveRecord::Base
   validates :content, presence: true
   validates :asker_id, presence: true
 
-
   def order_answers
     answers = self.answers
     ordered_answers = answers.sort_by { |a| a.vote_count }.reverse
