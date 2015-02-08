@@ -1,10 +1,12 @@
 <div class ="comment_show">
   <div class="comment_nav_bar">
-  <p><%= answer_comment.author.username %> | <%=answer_comment.created_at%></p>
+  <p>Comment by <%= answer_comment.author.username %> | <%=answer_comment.created_at%> | Votes </p>
   </div>
   <div class="comment_nav_bar">
     <%=answer_comment.vote_count%>
     <%= link_to 'Up', answer_comment_up_path(answer_comment.id)%>|<%= link_to 'Down', answer_comment_down_path(answer_comment.id)%>
   </div>
-  <p><%= answer_comment.content %></p>
+  <div class="comment">
+  <%= answer_comment.content %>
+  </div>
 </div>
