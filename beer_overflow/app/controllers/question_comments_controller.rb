@@ -1,5 +1,6 @@
 class QuestionCommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def new
     @question = Question.find(params[:question_id])

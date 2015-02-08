@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
 
 before_action :set_question, only: [:show, :edit, :destroy, :update]
+before_filter :authenticate_user!, except: [:index, :show]
 
   def show
     @answer = Answer.new
