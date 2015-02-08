@@ -3,21 +3,22 @@
     <%= answer.responder.username %> answered:
   </p>
 </div>
+<div id="answer_vote">
+  <%= answer.vote_count%> <br>
+  <%= link_to 'Up', answer_up_path(answer.id)%>|<%= link_to 'Down', answer_down_path(answer.id), locals: {answer: answer}%>
+</div>
 
 <div>
   <%= answer.content %>
 </div>
 
-<% if current_user != nil && current_user.id == @question.asker.id %>
+<% if current_user != nil && current_user.id == answer.question.asker.id %>
 
   <%= form_for(@question) do |f| %>
     <% f.hidden_field :best_answer_id, :value => answer.id %>
     <%= f.submit "Best Answer" %>
   <% end %>
 <% end %>
-
-
-
 
 <p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
 

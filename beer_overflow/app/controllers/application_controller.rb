@@ -24,4 +24,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_votable
+      @votable = params[:votable].classify.constantize.find(votable_id)
+  end
+
+  def votable_id
+    params[(params[:votable].singularize + "_id").to_sym]
+  end
+
 end

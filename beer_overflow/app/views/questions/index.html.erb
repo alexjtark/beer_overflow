@@ -9,5 +9,7 @@
       <%= q.content %><br>
       <%= q.asker.username %><br>
       <%= q.date_posted %>
+      <%= q.vote_count %>
+      <%=link_to 'Up', question_up_path(q.id)%>|<%= link_to 'Down', question_down_path(q.id)%>
   </div>
 <% end %>

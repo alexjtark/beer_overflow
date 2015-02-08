@@ -1,6 +1,11 @@
 <h1>
   <%= @question.title %>
 </h1>
+<div>
+  <%= @question.vote_count%> <br>
+  <%=link_to 'Up', question_up_path(@question.id)%>|<%= link_to 'Down', question_down_path(@question.id)%>
+
+</div>
   <p>
     <%= @question.asker.username %> asked,
   </p>
@@ -18,6 +23,7 @@
       <% @question.comments.each do |com| %>
       <p><%= com.author.username %> commented,</p>
       <p><%= com.content %></p>
+      <%= render template: 'question_comments/show', locals: {question_comment: com} %>
       <% end %>
     <p>
      <%= link_to 'Comment on Question', {:controller => "question_comments", :action => "new", :question_id => @question.id}%></p>
@@ -29,6 +35,10 @@
         <div class="answer-comments">
           <p><%= com.author.username %> commented,</p>
           <p><%= com.content %></p>
+          <div class="comment_vote">
+            <%= com.vote_count%> <br>
+            <%=link_to 'Up', {controller: 'answer_comments', action: "upvote", id: com.id}%>|<%= link_to 'Down', {controller: 'answer_comments', action: "downvote", id: com.id }%>
+          </div>
         </div>
           <% end %>
       <%end%>
