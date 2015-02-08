@@ -1,2 +1,6 @@
-<%= @question_comment.content %>
-<p><%= @question_comment.author.username %></p>
+<%= question_comment.content %>
+<p><%= question_comment.author.username %></p>
+<div class="comment_vote">
+  <%=question_comment.vote_count%>
+  <%= link_to 'Up', question_comment_up_path(question_comment.id)%>|<%= link_to 'Down', question_comment_down_path(question_comment.id)%>
+</div>
