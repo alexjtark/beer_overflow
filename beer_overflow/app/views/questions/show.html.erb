@@ -18,10 +18,12 @@
   <div class="question_content">
     <p1> <%= @question.content %></p1>
   </div>
+  <% if current_user != @question.asker %>
     <div class="answer-question">
       <p> Answer This Question:</p>
         <%= render partial: '/answers/new', controller: 'answers', action: 'new', locals: {:question_id => @question.id} %>
     </div>
+    <% end %>
     <div class="question-answers">
       <% @question.order_answers.each do |answer| %>
         <%=render :template => 'answers/show', locals: {answer: answer} %>
