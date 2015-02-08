@@ -2,18 +2,17 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
-  concern :votable do
-    resources :votes
-  end
-
-  # concern :commentable do
-  #   resources :comments
+  # concern :votable do
+  #   resources :votes, only: [:create, :new, :destroy, :update]
   # end
+  # resources :questions, concerns: :votable
 
-  resources :questions, concerns: :votable
-  resources :answers, concerns: :votable
-  resources :answer_comments, concerns: :votable
-  resources :question_comments, concerns: :votable
+  # resources :answers, concerns: :votable
+  # resources :answer_comments, concerns: :votable
+  # resources :question_comments, concerns: :votable
+
+  resources :questions, :answer_comments, :question_comments, :answers
+
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -23,7 +22,20 @@ Rails.application.routes.draw do
 
   get 'index' => 'questions#index'
 
-# polymorphic_url([:admin, @article, @comment])
+  get 'votes/show', to: 'votes#show'
+  post 'votes/create', to: 'votes#create'
+
+  get 'questions/:id/upvote', to: 'questions#upvote', as: 'question_up'
+  get 'questions/:id/downvote', to: 'questions#downvote', as: 'question_down'
+
+  get 'answers/:id/upvote', to: 'answers#upvote', as: 'answer_up'
+  get 'answers/:id/downvote', to: 'answers#downvote', as: 'answer_down'
+
+  get 'answer_comments/:id/upvote', to: 'comments#upvote', as: 'answer_comment_up'
+  get 'answer_comments/:id/downvote', to: 'comments#downvote', as: 'answer_comment_down'
+
+  get 'question_comments/:id/upvote', to: 'comments#upvote', as: 'question_comment_up'
+  get 'question_comments/:id/downvote', to: 'comments#downvote', as: 'question_comment_down'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
