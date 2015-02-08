@@ -23,6 +23,14 @@ class Question < ActiveRecord::Base
 
   end
 
+  def order_comments
+    comments = self.comments
+    ordered_comments = comments.sort_by { |a| a.vote_count }.reverse
+
+    return ordered_comments
+
+  end
+
   def self.all_by_date
     Question.all.order(created_at: :desc)
   end

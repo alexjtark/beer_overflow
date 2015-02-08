@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
   belongs_to :parent, polymorphic: true
   has_many :votes, as: :votable
 
+
   def vote_count
     votes.where(liked: true).count - votes.where(liked: false).count
   end

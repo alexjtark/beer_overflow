@@ -8,7 +8,7 @@
       Votes <%= @question.vote_count%> |
       <%=link_to 'Up', question_up_path(@question.id)%>|<%= link_to 'Down', question_down_path(@question.id)%> | <%= link_to 'Comment', {:controller => "question_comments", :action => "new", :question_id => @question.id}%>
     </div>
-      <% if current_user.id == @question.asker.id %>
+       <% if current_user && current_user == @question.asker %>
       <div class="question_nav_bar">
         <%= link_to 'Edit', edit_question_path(@question)  %> |
         <%= link_to 'Delete', @question, method: :delete, data: { confirm: "Are you sure about this, #{@question.asker.username}?" }  %> |
