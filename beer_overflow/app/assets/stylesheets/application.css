@@ -28,3 +28,25 @@
   display: inline-block;
   font-style: italic;
 }
+
+.answer_nav_bar {
+  display: inline-block;
+  font-style: italic;
+  padding-left: 10px;
+}
+
+.nav_bar {
+  background: #FFB6A3;
+}
+.answer_content {
+  background: #FF6C47;
+  padding: 10px;
+}
+
+.answer {
+  width: 60%;
+}
+
+.vote_count {
+  font-style: bold;
+}
