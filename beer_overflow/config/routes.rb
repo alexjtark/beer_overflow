@@ -2,7 +2,18 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
-  resources :questions, :answers, :answer_comments, :question_comments, :answer_votes, :question_votes, :comment_votes
+  concern :votable do
+    resources :votes
+  end
+
+  # concern :commentable do
+  #   resources :comments
+  # end
+
+  resources :questions, concerns: :votable
+  resources :answers, concerns: :votable
+  resources :answer_comments, concerns: :votable
+  resources :question_comments, concerns: :votable
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -12,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'index' => 'questions#index'
 
+# polymorphic_url([:admin, @article, @comment])
 
 
   # The priority is based upon order of creation: first created -> highest priority.
