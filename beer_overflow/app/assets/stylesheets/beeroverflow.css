@@ -2,6 +2,18 @@
   color: white;
 }
 
+#ask-link {
+text-align: center;
+font-size: 1.2em;
+
+}
+
+#ask-link a {
+  color: blue;
+
+
+}
+
 .column {
   margin: 0 auto;
   width: 70%;

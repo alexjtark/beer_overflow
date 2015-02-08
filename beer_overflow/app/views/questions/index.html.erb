@@ -1,15 +1,20 @@
-<h1>Check Out The Questions</h1>
-
-<%= link_to 'ask a question', new_question_path %>
-
-  <% @questions.each do |q| %>
-  <div class="questions">
-    <h4>
-      <%= link_to "#{q.title}", question_path(q.id) %></h4><br>
-      <%= q.content %><br>
-      <%= q.asker.username %><br>
-      <%= q.date_posted %>
-      <%= q.vote_count %>
-      <%=link_to 'Up', question_up_path(q.id)%>|<%= link_to 'Down', question_down_path(q.id)%>
-  </div>
-<% end %>
+<div class="container">
+       <div id="ask-link"> <%= link_to 'Ask a beer question!', new_question_path %>
+       </div>
+    <div class="row">
+        <% @questions.each do |q| %>
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-preview">
+              <%= link_to "#{q.title}", question_path(q.id) %>
+                <h2 class="post-title">
+                   <%= q.content %>
+                </h2>
+                 <p class="post-meta">
+                  <%= q.asker.username %>
+                  <%= q.updated_at  %>
+              </div>
+            <hr>
+          </div>
+         <% end %>
+      </div>
+    </div>
