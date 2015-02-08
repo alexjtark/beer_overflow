@@ -28,7 +28,7 @@
         <% end %>
     </div>
     <div class="question-comments">
-      <% @question.comments.each do |com| %>
+      <% @question.order_comments.each do |com| %>
       <%= render template: 'question_comments/show', locals: {question_comment: com} %>
       <% end %>
     </div>

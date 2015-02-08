@@ -29,7 +29,7 @@
   </div>
 
   <div class="answer_comments">
-    <% answer.comments.each do |com| %>
+    <% answer.order_comments.each do |com| %>
       <%= render template: 'answer_comments/show', locals: {answer_comment: com, answer: answer} %>
       <%end%>
   </div>
