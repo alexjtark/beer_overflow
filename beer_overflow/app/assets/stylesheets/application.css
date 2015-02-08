@@ -17,3 +17,13 @@
  *= require beeroverflow
 
  */
+
+.comment_show {
+  background-color: #D8D8C5;
+  padding-left: 1px;
+  margin-top: 20px;
+}
+
+.comment_nav_bar {
+  display: inline-block;
+}
