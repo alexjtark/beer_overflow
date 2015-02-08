@@ -1,14 +1,14 @@
 <div class="container">
-       <div id="ask-link"> <%= link_to 'Ask a beer question!', new_question_path %>
+       <h2><div id="ask-link"> <%= link_to 'Ask a beer question!', new_question_path %></h2>
        </div>
     <div class="row">
         <% @questions.each do |q| %>
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-preview">
-              <%= link_to "#{q.title}", question_path(q.id) %>
                 <h2 class="post-title">
-                   <%= q.content %>
+              <%= link_to "#{q.title}", question_path(q.id) %>
                 </h2>
+                  <p1> <%= q.content %></p1>
                  <p class="post-meta">
                   <%= q.asker.username %>
                   <%= q.date_posted  %>
