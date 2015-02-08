@@ -1,5 +1,6 @@
 <div class="container">
-       <%= link_to 'Ask a question', new_question_path %>
+       <div id="ask-link"> <%= link_to 'Ask a beer question!', new_question_path %>
+       </div>
     <div class="row">
         <% @questions.each do |q| %>
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -8,7 +9,9 @@
                 <h2 class="post-title">
                    <%= q.content %>
                 </h2>
-                 <p class="post-meta"> <%= q.asker.username %>
+                 <p class="post-meta">
+                  <%= q.asker.username %>
+                  <%= q.updated_at  %>
               </div>
             <hr>
           </div>
