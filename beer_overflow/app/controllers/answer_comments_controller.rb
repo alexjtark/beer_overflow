@@ -1,5 +1,6 @@
 class AnswerCommentsController < ApplicationController
   before_action :set_answer_comment, only: [:show, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def new
     @answer_comment = Comment.new

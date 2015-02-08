@@ -5,18 +5,18 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  def authenticate_user
+  def authenticate_user!
     if session[:user_id]
-      @current_user = User.find session[:user_id]
+      @current_user = User.find session[:id]
       return true
     else
-      redirect_to(:controller => 'sessions', :action => 'login')
+      redirect_to(:controller => 'sessions', :action => 'new')
       return false
     end
   end
 
   def save_login_state
-    if session[:user_id]
+    if session[:id]
       redirect_to(:controller => 'questions', :action => 'index')
       return false
     else
