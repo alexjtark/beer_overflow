@@ -20,5 +20,11 @@
   <% end %>
 <% end %>
 
+<div class="answer_comments">
+  <% answer.comments.each do |com| %>
+    <%= render template: 'answer_comments/show', locals: {answer_comment: com, answer: answer} %>
+    <%end%>
+</div>
+
 <p><%= link_to 'Comment', {:controller => "answer_comments", :action => "new", :answer_id => answer.id}%></p>
 

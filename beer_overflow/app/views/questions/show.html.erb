@@ -5,7 +5,6 @@
 <div>
   <%= @question.vote_count%> <br>
   <%=link_to 'Up', question_up_path(@question.id)%>|<%= link_to 'Down', question_down_path(@question.id)%>
-
 </div>
   <p>
     <%= @question.asker.username %> asked,
@@ -35,20 +34,10 @@
 
     <div class="question-answers">
       <% @question.order_answers.each do |answer| %>
-      <%=render :template => 'answers/show', locals: {answer: answer} %>
-        <% answer.comments.each do |com| %>
-        <div class="question-list">
-          <div class="question-line-item">
-          <p><%= com.author.username %> commented,</p>
-          <p><%= com.content %></p>
-          <div class="comment_vote">
-            <%= com.vote_count%> <br>
-            <%=link_to 'Up', {controller: 'answer_comments', action: "upvote", id: com.id}%>|<%= link_to 'Down', {controller: 'answer_comments', action: "downvote", id: com.id }%>
-          </div>
-          </div>
-        </div>
-          <% end %>
-      <%end%>
+      <div class= "question_answer">
+        <%=render :template => 'answers/show', locals: {answer: answer} %>
+      </div>
+        <% end %>
     </div>
 
     <div class="answer-question">
