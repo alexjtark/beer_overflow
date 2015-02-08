@@ -24,6 +24,26 @@ class QuestionCommentsController < ApplicationController
     @question_comment.destroy
   end
 
+ def upvote
+  @question_comment = Comment.find(params[:id])
+  @vote = Vote.new(user: current_user, votable_id: @question_comment.id, votable_type: "Comment", liked: true)
+  unless @vote.save
+    db_vote = Vote.where(user_id: current_user.id, votable_id: @question_comment.id, votable_type: "Comment")[0]
+    db_vote.update(liked: true)
+  end
+  redirect_to :back
+end
+
+def downvote
+  @question_comment = Comment.find(params[:id])
+  @vote = Vote.new(user: current_user, votable_id: @question_comment.id, votable_type: "Comment", liked: false)
+  unless @vote.save
+    db_vote = Vote.where(user_id: current_user.id, votable_id: @question_comment.id, votable_type: "Comment")[0]
+    db_vote.update(liked: false)
+  end
+  redirect_to :back
+end
+
   private
 
   def set_comment

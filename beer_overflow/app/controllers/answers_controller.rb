@@ -12,7 +12,29 @@ end
 
 def show
   @answer = Answer.find(params[:id])
+  render :show, locals: {answer: @answer}
 end
+
+def upvote
+  @answer = Answer.find(params[:id])
+  @vote = Vote.new(user: current_user, votable_id: @answer.id, votable_type: "Answer", liked: true)
+  unless @vote.save
+    db_vote = Vote.where(user_id: current_user.id, votable_id: @answer.id, votable_type: "Answer")[0]
+    db_vote.update(liked: true)
+  end
+  redirect_to :back
+end
+
+def downvote
+  @answer = Answer.find(params[:id])
+  @vote = Vote.new(user: current_user, votable_id: @answer.id, votable_type: "Answer", liked: false)
+  unless @vote.save
+    db_vote = Vote.where(user_id: current_user.id, votable_id: @answer.id, votable_type: "Answer")[0]
+    db_vote.update(liked: false)
+  end
+  redirect_to :back
+end
+
 
 private
 

@@ -16,7 +16,6 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
     if @question.save
       redirect_to @question
     else
-
       redirect_to signup_path
     end
   end
@@ -38,15 +37,31 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
     redirect_to '/'
   end
 
+  def upvote
+    @question = Question.find(params[:id])
+    @vote = Vote.new(user: current_user, votable_id: @question.id, votable_type: "Question", liked: true)
+    unless @vote.save
+      db_vote = Vote.where(user_id: current_user.id, votable_id: @question.id, votable_type: "Question")[0]
+      db_vote.update(liked: true)
+    end
+  redirect_to :back
+end
+
+def downvote
+  @question = Question.find(params[:id])
+  @vote = Vote.new(user: current_user, votable_id: @question.id, votable_type: "Question", liked: false)
+  unless @vote.save
+    db_vote = Vote.where(user_id: current_user.id, votable_id: @question.id, votable_type: "Question")[0]
+    db_vote.update(liked: false)
+  end
+  redirect_to :back
+end
+
   private
 
   def set_question
     @question = Question.find(params[:id])
   end
-
-  # def question_parameters_with_user_id
-  #   question_params.merge(asker_id: session[:id])
-  # end
 
   def question_params
     params.require(:question).permit(:title, :content, :best_answer_id)
