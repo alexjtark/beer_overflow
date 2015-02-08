@@ -22,7 +22,6 @@
 
       <% @question.comments.each do |com| %>
       <p><%= com.author.username %> commented,</p>
-      <p><%= com.content %></p>
       <%= render template: 'question_comments/show', locals: {question_comment: com} %>
       <% end %>
     <p>
