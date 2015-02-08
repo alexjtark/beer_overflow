@@ -33,8 +33,13 @@ before_action :set_question, only: [:show, :edit, :destroy, :update]
   end
 
   def destroy
-    @question.destroy
-    redirect_to '/'
+    if current_user[:id] == @question.asker.id
+      @question.destroy
+      redirect_to '/'
+    else
+
+      redirect_to :back
+    end
   end
 
   def upvote
