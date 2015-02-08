@@ -21,7 +21,9 @@
 .comment_show {
   background-color: #D8D8C5;
   padding-left: 1px;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-left: 50px;
+  padding-left: 10px;
 }
 
 .comment_nav_bar {
@@ -45,12 +47,13 @@
 
 .answer {
   width: 80%;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .question_nav_bar {
   display: inline-block;
   font-style: italic;
-  padding-left: 10px;
   height: 30px;
 }
 
@@ -61,7 +64,7 @@
 }
 
 #question {
-  margin-left: 30px;
+  margin-left: 40px;
   width: 80%;
 }
 
@@ -72,4 +75,9 @@
 .question_content {
   background: #5CADFF;
   padding: 10px;
+}
+
+.c_nav_bar {
+  background-color: #999966;
+  height: 60px;
 }
