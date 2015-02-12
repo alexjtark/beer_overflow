@@ -4,7 +4,7 @@ describe User do
   feature 'Create a Question' do
     scenario 'Should allow user to view the new question page' do
       visit new_question_path
-      save_and_open_page
+      save_and_open_page # you committed a debugger statement :(
       expect(page).to have_content 'Ask your question below'
     end
   end

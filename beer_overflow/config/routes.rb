@@ -27,6 +27,14 @@ Rails.application.routes.draw do
   get 'votes/show', to: 'votes#show'
   post 'votes/create', to: 'votes#create'
 
+  # Seems a little unconventional
+  #
+  #
+  # seems like you should be POST or PUTting here...not 'GET'
+  #
+  # There's a famous story about a web crawler deleing everything in a site
+  # because the DELTE was a link that it could click (see: internet)
+
   get 'answer_comments/:id/upvote', to: 'answer_comments#upvote', as: 'answer_comment_up'
   get 'answer_comments/:id/downvote', to: 'answer_comments#downvote', as: 'answer_comment_down'
 

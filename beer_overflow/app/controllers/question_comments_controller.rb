@@ -8,6 +8,11 @@ class QuestionCommentsController < ApplicationController
   end
 
   def create
+    # If we were to do this in the commentsController which doesn't exist
+    # in params we'd have maybe a hidden field of type: "Question"
+    #
+    # And then we could do something like parent = params[:type].constantize
+    # parent.comments.create(params[:comment])
     @question_comment = Comment.new question_comment_params
     question = @question_comment.parent
     @question_comment.author = current_user
